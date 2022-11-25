@@ -1,0 +1,85 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.site-header {
+  margin-bottom: 40px;
+}
+
+.site-header__title {
+  text-align: center;
+  background: #eee;
+  padding: 15px;
+  border-radius: 4px;
+  color: #9c9c9c;
+  font-size: 28px;
+}
+
+.site-header__title__light {
+  font-weight: 300;
+  color: #adadad;
+}
+
+.city {
+  fill: #cccccc;
+  fill-opacity: 1;
+  stroke: #fff;
+  stroke-opacity: 1;
+  stroke-width: 0.5;
+  -webkit-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.city:hover {
+  fill: #a9a9a9;
+}
+
+.show-city-name {
+  background-color: #427efc;
+  border-radius: 10px;
+  color: #fff;
+  position: absolute;
+  padding: 15px 25px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 16px;
+}
+
+.show-city-name--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rates {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+.rates .rates-title {
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: #4e4e4e;
+}
+
+.rates .rate-item {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.rates .rate-item .rate-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
