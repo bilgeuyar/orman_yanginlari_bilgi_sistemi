@@ -1,0 +1,88 @@
+Private Sub CommandButton1_Click()
+On Error GoTo bitir
+
+aranan = InputBox("Şehir adını gir", "Arama")
+Range("A:A").Find(aranan).Select
+silsatir = ActiveCell.Row
+
+txtshr.Value = Worksheets("VERİ TABANI").Cells(silsatir, 1)
+txtbt.Value = Worksheets("VERİ TABANI").Cells(silsatir, 2)
+txtrk.Value = Worksheets("VERİ TABANI").Cells(silsatir, 3)
+txtrd.Value = Worksheets("VERİ TABANI").Cells(silsatir, 4)
+txtys.Value = Worksheets("VERİ TABANI").Cells(silsatir, 5)
+txtks.Value = Worksheets("VERİ TABANI").Cells(silsatir, 6)
+txtoya.Value = Worksheets("VERİ TABANI").Cells(silsatir, 7)
+txtoyh.Value = Worksheets("VERİ TABANI").Cells(silsatir, 8)
+txth.Value = Worksheets("VERİ TABANI").Cells(silsatir, 9)
+
+Worksheets("VERİ TABANI").Activate
+
+Exit Sub
+bitir: MsgBox "Aranan kayıt bulunamadı..", , "HATA"
+
+
+End Sub
+
+
+
+Private Sub ListBox1_Click()
+Sheets("GRAFİK VERİ TABANI").Range("M2") = Me.ListBox1
+Set mychart = Sheets("GRAFİK VERİ TABANI").Shapes("Yangın adedi").Chart
+mychart.Export VBA.Environ("TEMP") & Application.PathSeparator & "graph.jpg"
+Me.Image1.Picture = LoadPicture(VBA.Environ("TEMP") & Application.PathSeparator & "graph.jpg")
+
+Sheets("GRAFİK VERİ TABANI").Range("M21") = Me.ListBox1
+Set mychart1 = Sheets("GRAFİK VERİ TABANI").Shapes("yangin hektar").Chart
+mychart1.Export VBA.Environ("TEMP") & Application.PathSeparator & "graph1.jpg"
+Me.Image2.Picture = LoadPicture(VBA.Environ("TEMP") & Application.PathSeparator & "graph1.jpg")
+
+End Sub
+
+
+
+Private Sub MultiPage1_Change()
+
+End Sub
+
+Private Sub UserForm_Activate()
+
+
+Module1.MaxMinButton (Me.Caption)
+
+
+
+End Sub
+
+Private Sub UserForm_QueryClose(Cancel As Integer, CloseMode As Integer)
+Application.Visible = True
+End Sub
+
+Private Sub UserForm_Initialize()
+Dim sozluk As Object
+Dim deger As Range
+Dim sehir, kontrol As String
+
+sonsatir = Sheets("GRAFİK VERİ TABANI").Cells(Rows.Count, "a").End(xlUp).Row
+Set sozluk = CreateObject("scripting.dictionary")
+
+For Each sehir In Sheets("GRAFİK VERİ TABANI").Range("A2:A" & sonsatir)
+kontrol = Trim(sehir.Value)
+If Len(kontrol) > 0 Then sozluk(kontrol) = sozluk(kontrol) + 1
+Next sehir
+
+For Each sehir In sozluk.keys
+Me.ListBox1.AddItem sehir
+Next sehir
+
+    With UserForm1
+        .Height = Application.Height
+        .Width = Application.Width
+    End With
+
+
+
+   
+
+
+
+End Sub
